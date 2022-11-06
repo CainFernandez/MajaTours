@@ -1,0 +1,20 @@
+@model MajaTours.Data.Entities.Category
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Borrar</h1>
+
+<h3>¿Estas seguro de querer borrar?</h3>
+<div>
+    <!-- LLAMA A LA VISTA PARCIAL _CategoryDetails -->
+        <partial name="_CategoryDetails" />
+    <!-- FIN --> 
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-outline-danger" />
+        <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
+    </form>
+</div>
