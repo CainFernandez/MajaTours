@@ -1,5 +1,6 @@
 
 using MajaTours.Data.Entities;
+using MajaTours.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace MajaTours.Helpers
@@ -15,6 +16,9 @@ namespace MajaTours.Helpers
         Task AddUserToRoleAsync(User user, string roleName);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+        Task LogoutAsync();
+
     }
 
 }
