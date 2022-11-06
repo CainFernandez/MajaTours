@@ -1,4 +1,7 @@
 using MajaTours.Data;
+using MajaTours.Data.Entities;
+using MajaTours.Helpers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +15,18 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddIdentity<User, IdentityRole>(cfg =>
+{
+    cfg.User.RequireUniqueEmail = true;
+    cfg.Password.RequireDigit = false;
+    cfg.Password.RequiredUniqueChars = 0;
+    cfg.Password.RequireLowercase = false;
+    cfg.Password.RequireNonAlphanumeric = false;
+    cfg.Password.RequireUppercase = false;
+}).AddEntityFrameworkStores<DataContext>();
+
 builder.Services.AddTransient<SeedDb>();
+builder.Services.AddScoped<IUserHelper, UserHelper>();
 
 var app = builder.Build();
 // INYECCION A LA BASE DE DATOS ALIMENTADORA.
@@ -42,6 +56,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
