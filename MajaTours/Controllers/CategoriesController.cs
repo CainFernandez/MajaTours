@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MajaTours.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         
