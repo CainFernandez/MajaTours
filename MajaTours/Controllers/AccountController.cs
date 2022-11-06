@@ -42,6 +42,12 @@ namespace MajaTours.Controllers
             await _userHelper.LogoutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+         //------- PAGINA NO AUTORIZADAD --------
+        public IActionResult NotAuthorized()
+        {
+            return View();
+        }
     }
 
 }
