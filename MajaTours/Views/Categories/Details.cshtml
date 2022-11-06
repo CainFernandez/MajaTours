@@ -1,0 +1,16 @@
+@model MajaTours.Data.Entities.Category
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <!-- LLAMA A LA VISTA PARCIAL _CategoryDetails -->
+    <partial name="_CategoryDetails" />
+    <!-- FIN --> 
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-outline-success">Regrasar</a>
+</div>
