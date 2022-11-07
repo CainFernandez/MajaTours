@@ -21,8 +21,8 @@ namespace MajaTours.Data
             await _context.Database.EnsureCreatedAsync(); // crea la base datos
             await CheckCategoriesAsync();  
             await CheckRolesAsync();
-            await CheckUserAsync("Abel", "Pérez", "MajaTours@gmail.com", "322 311 4620", UserType.Admin); 
-            await CheckUserAsync("Manuel", "Diaz", "Manuel@gmail.com", "6857565", UserType.User);     
+            await CheckUserAsync("Abel", "Pérez Férnadez", "Admin@MajaTours.com", "683243", UserType.Admin); 
+            await CheckUserAsync("Manuel", "Arbaiza", "Manuel@gmail.com", "6857565", UserType.User);     
         }
         private async Task<User> CheckUserAsync(
             string firstName,
@@ -60,9 +60,9 @@ namespace MajaTours.Data
             if(!_context.categories.Any()) // Any devuelve verdadero.
             {
                 _context.categories.Add(new Category{Name = "Gastronomia"});
-                _context.categories.Add(new Category{Name = "Playas"});
                 _context.categories.Add(new Category{Name = "Naturaleza"});
-                _context.categories.Add(new Category{Name = "Vacaciones"});
+                _context.categories.Add(new Category{Name = "Playas"});
+
                 await _context.SaveChangesAsync();
             }
         }
