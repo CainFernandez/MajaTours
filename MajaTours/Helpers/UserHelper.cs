@@ -57,6 +57,29 @@ namespace MajaTours.Helpers
             return await _userManager.IsInRoleAsync(user,roleName);
         }
 
+        // REGISTRA UN USUARIO NUEVO.
+        public async Task<User> AddUserAsync(AddUserViewModel model)
+        {
+            User user = new User
+            {
+                Email = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                UserName = model.Username,
+                UserType = model.UserType
+            };
+            
+            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+            User newUser = await GetUserAsync(model.Username);
+            await AddUserToRoleAsync(newUser, user.UserType.ToString());
+            return newUser;
+        }
+
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
         {
             return await _signInManager.PasswordSignInAsync(
