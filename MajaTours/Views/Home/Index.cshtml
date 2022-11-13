@@ -4,52 +4,58 @@
     ViewData["Title"] = "Inicio";
 }
 
-<style type="text/css">
-    .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border: 2px solid lightgray;
-        box-shadow: 2px 2px 8px 4px #d3d3d3d1;
-        border-radius: 15px;
-        font-family: sans-serif;
-        margin: 5px;
-    }
-</style>
-
 @if(Model.Quantity > 0)
 {
     <a asp-action="ShowCart" class="btn btn-outline-primary">Ver Reservas (@Model.Quantity)</a>
 }
 
-<div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
-    @if (Model.Products.Count() > 0)
-    {
-        @foreach (var item in Model.Products)
-        {
-            <div class="col">
-                <div class="card h-100">
-                    <div class="text-center zoom">
-                        <img src="@item.Image" style="height:150px; max-width:200px;" class="text-center" alt=@item.Name />
+<!-- Inicio Planes -->
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="mb-3">Nuestros Planes</h1>
+        </div>
+    
+    <div class="container-xxl py-0.1">
+        <div class="d-flex justify-content-center mb-2">
+            @if (Model.Products.Count() > 0)
+            {
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="package-item p-2 ">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="@item.Image" alt="@item.Name">
+                            </div>
+                            <div class="d-flex border-bottom">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>@item.Name</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>3 Días</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>2 Personas</small>
+                            </div>
+                            <div class="text-center p-4">
+                                    <h3 class="mb-0">@Html.DisplayFor(modelItem => item.Price)</h3>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>@item.Description</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver Detalles</a>
+                                    <a asp-action="Add" asp-route-id="@item.Id" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Reservar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-navy"> @item.Name</h5>
-                        <p class="card-text smfnt">@item.Description</p>
-                        <h5 class="text-muted">@Html.DisplayFor(modelItem => item.Price)</h5>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Ver detalles</a>
-                        <a asp-action="Add" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Reservar ahora</a>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-    else
-    {
-        <h3>No hay productos con su criterio de búsqueda</h3>
-    }
-</div>
+                }
+            }
+            else
+            {
+                <h3>No hay productos con su criterio de búsqueda</h3>
+            }
+        </div>
+    </div>
+<!-- Fin Planes -->
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
