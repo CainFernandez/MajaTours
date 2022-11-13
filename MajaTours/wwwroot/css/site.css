@@ -29,13 +29,13 @@ body {
   margin: 0 auto;
   cursor: pointer;
 }
-
 .zoom:hover {
-  -ms-transform: scale(2); /* IE 9 */
-  -webkit-transform: scale(2); /* Safari 3-8 */
-  transform: scale(2);
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
 }
 
+/* Estilo de Carrusel*/
 .carousel-inner {
   width: auto;
   height: 500px;
