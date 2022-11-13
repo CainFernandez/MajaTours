@@ -9,7 +9,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border: 1px solid lightgray;
+        border: 2px solid lightgray;
         box-shadow: 2px 2px 8px 4px #d3d3d3d1;
         border-radius: 15px;
         font-family: sans-serif;
@@ -19,7 +19,7 @@
 
 @if(Model.Quantity > 0)
 {
-    <a asp-action="ShowCart" class="btn btn-outline-primary">Ver Carro de Compras (@Model.Quantity)</a>
+    <a asp-action="ShowCart" class="btn btn-outline-primary">Ver Reservas (@Model.Quantity)</a>
 }
 
 <div class="row row-cols-1 row-cols-md-4 g-4 mt-1">
@@ -38,8 +38,8 @@
                         <h5 class="text-muted">@Html.DisplayFor(modelItem => item.Price)</h5>
                     </div>
                     <div class="card-footer text-center">
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Detalles</a>
-                        <a asp-action="Add" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Agregar al Carrito</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Ver detalles</a>
+                        <a asp-action="Add" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Reservar ahora</a>
                     </div>
                 </div>
             </div>
