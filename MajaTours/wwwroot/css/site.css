@@ -1,8 +1,5 @@
 @charset "utf-8";
 
-html {
-  font-size: 14px;
-}
 
 @media (min-width: 768px) {
   html {
@@ -17,6 +14,19 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+/*** Package ***/
+.package-item {
+  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+}
+
+.package-item img {
+  transition: .5s;
+}
+
+.package-item:hover img {
+  transform: scale(1.1);
 }
 
 /*Zoom images*/
