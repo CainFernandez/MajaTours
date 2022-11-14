@@ -4,24 +4,39 @@
     ViewData["Title"] = "Inicio";
 }
 
-@if(Model.Quantity > 0)
-{
-    <a asp-action="ShowCart" class="btn btn-outline-primary">Ver Reservas (@Model.Quantity)</a>
-}
-
+<div class="container-fluid bg-white py-0 mb-5 hero-header">
+            <div class="container-fluid py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown">Disfruta de tus vacaciones con nosotros</h1>
+                        <p class="fs-4 text-white mb-4 animated slideInDown">Tempor erat elitr rebum at clita diam amet diam et eos erat ipsum lorem sit</p>
+                        <div class="position-relative w-75 mx-auto animated slideInDown">
+                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Buscar Destino">
+                            <button type="button" class="btn btn-success rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <li class="nav-item">
+            @if(Model.Quantity > 0)
+                {
+                    <a asp-action="ShowCart" class="btn btn-outline-primary">Ver Reservas (@Model.Quantity)</a>
+                }
+        </li>
 <!-- Inicio Planes -->
     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h1 class="mb-3">Nuestros Planes</h1>
         </div>
     
-    <div class="container-xxl py-0.1">
+    <div class="container py-0.1">
         <div class="d-flex justify-content-center mb-2">
             @if (Model.Products.Count() > 0)
             {
                 @foreach (var item in Model.Products)
                 {
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="package-item p-2 ">
+                        <div class="package-item p-2">
                             <div class="overflow-hidden">
                                 <img class="img-fluid" src="@item.Image" alt="@item.Name">
                             </div>
@@ -39,7 +54,7 @@
                                     <small class="fa fa-star text-primary"></small>
                                     <small class="fa fa-star text-primary"></small>
                                 </div>
-                                <p>@item.Description</p>
+                                <p class="text-muted">@item.Description</p>
                                 <div class="d-flex justify-content-center mb-2">
                                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver Detalles</a>
                                     <a asp-action="Add" asp-route-id="@item.Id" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Reservar Ahora</a>
