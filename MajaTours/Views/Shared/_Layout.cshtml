@@ -35,6 +35,8 @@
                         <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+507 6984-8439</small>
                         <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@MajaTours.com</small>
                     </div>
+                         
+    
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
                     <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -48,7 +50,7 @@
     <!-- Fin de Barra Superior  -->
 
     <!-- Inicio de Menu de Barra-->
-       <div class="container-fluid position-relative p-2">
+       <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MajaTours</a>
@@ -87,12 +89,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a>
                                 </li>
-                                
                             }
                             else
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+                                    <a class="btn btn-outline-success py-2 px-4 ms-0" asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+                                </li>
+                                  <li class="nav-item">
+                                    <a class="btn btn-outline-warning py-2 px-5 ms-1" asp-area="" asp-controller="Account" asp-action="Register">Registrar</a>
                                 </li>
                             }
                         </ul>
