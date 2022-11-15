@@ -31,7 +31,6 @@
   z-index: 99;
 }
 
-
 /*** Hero Header ***/
 .hero-header {
   background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../images/portada.jpg);
@@ -94,5 +93,17 @@ body {
   color: black;
   display: flex;
   text-align: center;
+}
+
+/* Estilo a carrito */
+.showcart{
+  position: relative;
+  bottom: 666px;
+  left: 600px;
+  width: 100px;
+  font-size: 20px;
+}
+.showcart a{
+  color: #ffff;
 }
 
