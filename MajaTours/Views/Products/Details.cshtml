@@ -1,21 +1,20 @@
 @model MajaTours.Data.Entities.Product
 @{
-    ViewData["Title"] = "Detalles";
+    ViewData["Title"] = "Detalle Producto";
 }
 
-<h1>Detalles</h1>
-
-<div>
-    <partial name="_ProductDetails" />    
-</div>
-
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-warning">Editar Producto</a>
-    <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
+<div class="container justify-content-center py-4">
+    <h3>Detalles Producto</h3>
+    <div>
+        <partial name="_ProductDetails" />    
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-warning">Editar Producto</a>
+        <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
+    </div>
 </div>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-<hr />
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

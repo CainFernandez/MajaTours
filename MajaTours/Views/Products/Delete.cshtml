@@ -1,17 +1,18 @@
 @model MajaTours.Data.Entities.Product
 
 @{
-    ViewData["Title"] = "Eliminar";
+    ViewData["Title"] = "Eliminar Producto";
 }
 
-<h1>Borrar</h1>
-
-<h3>Esta seguro que querer borrar?</h3>
-<div>
-    <partial name="_ProductDetails" />    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Borrar" class="btn btn-outline-danger" />
-        <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
-    </form>
+<div class="container justify-content-center py-4">
+    <h3>Borrar Producto</h3>
+    <h4>Esta seguro que querer borrar?</h4>
+    <div>
+        <partial name="_ProductDetails" />    
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Borrar" class="btn btn-outline-danger" />
+            <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
+        </form>
+    </div>
 </div>
