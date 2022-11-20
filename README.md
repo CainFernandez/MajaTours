@@ -1,6 +1,6 @@
 # MajaTours
 Aplicación Web de Turismo - Esctructura MVC - ASP.NET Core
- # Tener Instalado SDK version 6 Adelante.
+ # Tener Instalado SDK version 6.
  https://dotnet.microsoft.com/en-us/download
 # Instalar Paquetes
 https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.EntityFrameworkCore/6.0.9
