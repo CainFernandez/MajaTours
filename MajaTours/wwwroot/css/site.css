@@ -188,6 +188,16 @@
   color: #ffff;
 }
 
+/* Estilo para la factura*/
+.salescheck th{
+  border: 1px solid #000;
+}
+.salescheck td{
+  border: 1px solid #000;
+}
+
+
+
 /*** Booking ***/
 .booking {
   background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../images/booking.jpg);
