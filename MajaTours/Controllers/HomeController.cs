@@ -227,6 +227,71 @@ public class HomeController : Controller
             return RedirectToAction(nameof(ShowCart));
         }
     //--------
+    
+    //---- Creacìon de Factura ---------//
+    [Authorize]
+        public async Task<IActionResult> SalesCheck()
+        {
+            User user = await _userHelper.GetUserAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            List<TemporalSale>? temporalSales = await _context.TemporalSales
+            .Include(ts => ts.Product)
+            .Where(ts => ts.User.Id == user.Id)
+            .ToListAsync();
+            ShowCartViewModel model = new()
+            {
+                User = user,
+                TemporalSales = temporalSales,
+            };
+            return View(model);
+        }
+
+        // CONTROLADOR CREAR UNA NUEVA GATEGORIA.
+            public IActionResult Pay()
+            {
+                return View();
+            }
+            
+            // INICIO DEL METODO POST: PARA ENVIAR DATOS A LA BASE DE DATOS Y VALIDAR LOS CAMPOS.
+                [HttpPost]
+                [ValidateAntiForgeryToken]
+                public async Task<IActionResult> Pay( Pay pay)
+                {
+                    if (ModelState.IsValid) //Que cumpla con data anotetions
+                    {
+                        _context.Add(pay);
+
+                        //VALIDACION PARA NO PERMITIR REPETIR LA MISMA CATEGORIA. 
+                            try
+                            {
+                                await _context.SaveChangesAsync();
+                                return RedirectToAction(nameof(Index));
+                            }
+                            catch (DbUpdateException dbUpdateException)
+                            {
+                                if (dbUpdateException.InnerException.Message.Contains("duplicate"))
+                                {
+                                    ModelState.AddModelError(string.Empty, "Ya existe una categoria con el mismo nombre.");
+                                }
+                                else{
+                                    ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                                }
+                            }
+                            catch (Exception exception)
+                            {
+                                ModelState.AddModelError(string.Empty, exception.Message);
+                            }
+                        // FIN DE VALIDACION DE CATEGORIA.
+                    }
+                    return View(pay);
+                }
+            // FIN DEL METODO POST PARA CATEGORIA
+        // FIN DE CREAR UNA GATEGORIA NUEVA
+
+    
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
