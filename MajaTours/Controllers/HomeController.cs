@@ -249,7 +249,7 @@ public class HomeController : Controller
             return View(model);
         }
 
-        // CONTROLADOR CREAR UNA NUEVA GATEGORIA.
+        // CONTROLADOR CREAR UN NUEVO PAGO.
             public IActionResult Pay()
             {
                 return View();
@@ -264,7 +264,7 @@ public class HomeController : Controller
                     {
                         _context.Add(pay);
 
-                        //VALIDACION PARA NO PERMITIR REPETIR LA MISMA CATEGORIA. 
+                        //VALIDACION PARA NO PERMITIR REPETIR EL MISMO PAGO. 
                             try
                             {
                                 await _context.SaveChangesAsync();
@@ -284,12 +284,12 @@ public class HomeController : Controller
                             {
                                 ModelState.AddModelError(string.Empty, exception.Message);
                             }
-                        // FIN DE VALIDACION DE CATEGORIA.
+                        // FIN DE VALIDACION DE PAGO.
                     }
                     return View(pay);
                 }
-            // FIN DEL METODO POST PARA CATEGORIA
-        // FIN DE CREAR UNA GATEGORIA NUEVA
+            // FIN DEL METODO POST PARA PAGO
+        // FIN DE CREAR UN NUEVA PAGO
 
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
